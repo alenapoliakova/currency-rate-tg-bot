@@ -1,10 +1,10 @@
-# CurrencyRateTgBot-
+# CurrencyRateTgBot
 Телеграм бот, который отправляет пользователю официальный курс доллара/евро с сайта ЦБ.
 
 # Инструкция по использованию бота:
 1. Проверьте, что у вас установлен Python 3.10+.
 2. Склонируйте репозиторий с помощью команды:<br>
-<code>git clone https://github.com/alenapoliakova/CurrencyRateTgBot-.git </code>
+<code>git clone https://github.com/alenapoliakova/CurrencyRateTgBot.git </code>
 3. Для работы с ботом необходимо установить пакеты с помощью:<br>
 <code>pip install -r requirements.txt</code><br>
 Либо установите пакеты: pyTelegramBotAPI, requests, bs4 с помощью команды:<br>
