@@ -13,4 +13,4 @@
 <code>BOT_TOKEN = 'token'</code><br>
 <code>BOT_NAME = '@bot_name'</code><br>
 \* инструкция по созданию тг бота и получению токена по ссылке: https://clck.ru/dWnJq
-5. Запустите бота
+5. Запустите файл bot.py
