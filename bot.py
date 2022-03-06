@@ -12,7 +12,8 @@ name = BOT_NAME
 
 db = {}
 data = {
-    'start': f'Привет! Бот <b>{name}</b> делится с вами курсом валют с <b>сайта ЦБ</b>.\n\nОтправьте <b>/currency</b>, чтобы выбрать валюту.',
+    'start': f'Привет! Бот <b>{name}</b> делится с вами курсом валют с <b>сайта ЦБ</b>.\n\n'
+             f'Отправьте <b>/currency</b>, чтобы выбрать валюту.',
     'open_markup': 'Откройте клавиатуру для выбора валюты.',
     'close_markup': 'Вы закрыли клавиатуру. Отправьте <b>/currency</b>, чтобы открыть клавиатуру.'
 }
@@ -56,11 +57,13 @@ def start(message):
 def currency(message):
     markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
 
-    button_1 = types.KeyboardButton('Курс Доллара США')
-    button_2 = types.KeyboardButton('Курс Евро')
-    button_3 = types.KeyboardButton('Назад')
+    button_1 = types.KeyboardButton('Курс Доллара США 💲')
+    button_2 = types.KeyboardButton('Курс Евро 💶')
+    button_3 = types.KeyboardButton('Курс Фунта стерлингов 💷')
+    button_4 = types.KeyboardButton('Курс Белорусского рубля 🇧🇾')
+    button_5 = types.KeyboardButton('Назад')
 
-    markup.add(button_1, button_2, button_3)
+    markup.add(button_1, button_2, button_3, button_4, button_5)
 
     bot.send_message(message.chat.id, data['open_markup'], reply_markup=markup)
 
@@ -68,12 +71,16 @@ def currency(message):
 @bot.message_handler(content_types='text')
 def reply(message):
     match message.text:
-        case 'Курс Доллара США':
+        case 'Курс Доллара США 💲':
             bot.send_message(message.chat.id, get_currency('Доллар США'))
-        case 'Курс Евро':
+        case 'Курс Евро 💶':
             bot.send_message(message.chat.id, get_currency('Евро'))
+        case 'Курс Фунта стерлингов 💷':
+            bot.send_message(message.chat.id, get_currency('Фунт стерлингов'))
+        case 'Курс Белорусского рубля 🇧🇾':
+            bot.send_message(message.chat.id, get_currency('Белорусский рубль'))
         case 'Назад':
-            bot.send_message(message.chat.id, data['close_markup'],reply_markup=types.ReplyKeyboardRemove())
+            bot.send_message(message.chat.id, data['close_markup'], reply_markup=types.ReplyKeyboardRemove())
 
 
 bot.polling(non_stop=True)
