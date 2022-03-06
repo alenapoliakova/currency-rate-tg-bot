@@ -1,6 +1,9 @@
 # CurrencyRateTgBot
 Телеграм бот для отправки пользователю курса валют с сайта ЦБ.
 
+[![wakatime](https://wakatime.com/badge/github/alenapoliakova/CurrencyRateTgBot.svg)](https://wakatime.com/badge/github/alenapoliakova/CurrencyRateTgBot)
+(с 6 марта)
+
 ## Инструкция по использованию:
 1. Проверьте, что у вас установлен Python 3.10+.
 2. Форкните репозиторий, а затем склонируйте.<br>
