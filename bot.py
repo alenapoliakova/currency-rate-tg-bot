@@ -45,7 +45,7 @@ def get_currency(actual_currency: str):
 
             if actual_currency in name_of_currency:
                 db[f'{day} {month} {year} {actual_currency}'] = (name_of_currency, price)
-                return f'Курс <b>{name_of_currency}</b> на {day}.{month}.{year}: {price}'
+                return f'Курс <b>{name_of_currency}</b> на {day}.{month}.{year}: {price}₽'
 
 
 @bot.message_handler(commands='start')
