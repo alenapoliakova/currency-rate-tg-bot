@@ -15,10 +15,12 @@
 <code>BOT_TOKEN = 'token'</code><br>
 <code>BOT_NAME = '@bot_name'</code><br>
 \* инструкция по созданию тг бота и получению токена по ссылке: https://clck.ru/dWnJq
-5. Запустите файл bot.py
+5. Запустите файл bot.py.
 
 ## Список команд:
-- **start** - начать общение с ботом
+- **/start** - начать общение с ботом
 ![img.png](images/img1.png)
-- **currency** - открывается inline-клавиатура с выбором предпочитаемой валюты
+- **/currency** - открывается inline-клавиатура с выбором предпочитаемой валюты
 ![img.png](images/img2.png)
+- сообщение от бота после нажатия inline-кнопки:
+![img.png](images/img3.png)
