@@ -1,10 +1,11 @@
+from settings import BOT_TOKEN, BOT_NAME
+
 from telebot import TeleBot, types
-from requests import get
+from collections import namedtuple
 from re import findall, match
+from requests import get
 from bs4 import BeautifulSoup as bs
 from time import strftime, localtime
-from settings import BOT_TOKEN, BOT_NAME
-from collections import namedtuple
 
 
 bot = TeleBot(BOT_TOKEN, parse_mode='html')
