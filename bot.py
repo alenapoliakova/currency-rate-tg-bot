@@ -59,7 +59,6 @@ def get_currency(actual_currency: str, date_to_parse: tuple):
     :return: Текст с именем валюты и её курсом.
     """
     day, month, year = date_to_parse.day, date_to_parse.month, date_to_parse.year
-    # day, month, year = strftime("%d %m %Y", localtime()).split()
 
     currency = db.get(f'{day} {month} {year} {actual_currency}', None)
     if currency:
@@ -103,8 +102,6 @@ def currency(message):
 
 
 def answer_to_user(message, **kwargs):
-    # TODO: распарсить здесь дату и добавить в get_currency выбор даты
-
     parsed_date = parse_date(actual_date=message.text)
 
     if isinstance(parsed_date, date):
