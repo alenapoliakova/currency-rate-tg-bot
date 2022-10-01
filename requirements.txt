@@ -3,3 +3,5 @@ requests~=2.27.1
 bs4~=0.0.1
 beautifulsoup4~=4.10.0
 lxml~=4.8.0
+pydantic==1.10.2
+python-dotenv==0.21.0
