@@ -23,9 +23,6 @@ docker-compose up -d --build
 ```
 ## Список команд бота:
 - **/start** - начать общение с ботом
-![img.png](images/example_start.png)
 - **/currency** - открывается inline-клавиатура с выбором предпочитаемой валюты
-![img.png](images/example_currency_keyboard.png)  
 Далее бот попросит ввести предпочитаемую дату для получения курса валюты.  
 Сообщение от бота после нажатия inline-кнопки:
-![img.png](images/example_currency.png)

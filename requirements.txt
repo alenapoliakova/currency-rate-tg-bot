@@ -1,7 +1,7 @@
-pyTelegramBotAPI~=4.4.0
-requests~=2.27.1
-bs4~=0.0.1
-beautifulsoup4~=4.10.0
-lxml~=4.8.0
+https://github.com/aiogram/aiogram/archive/refs/heads/dev-3.x.zip
+fastapi==0.88.0
+uvicorn==0.20.0
 pydantic==1.10.2
+async-cb-rate==1.0.0
+redis==4.4.0
 python-dotenv==0.21.0

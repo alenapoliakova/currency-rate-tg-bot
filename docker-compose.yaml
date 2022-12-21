@@ -7,8 +7,23 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    ports:
+      - ${API_PORT}:5001
+    expose:
+      - 5001
     volumes:
       - .:/app
     env_file:
       - .env
-    command: python3 src/bot.py
+    depends_on:
+      - redis
+#    command: uvicorn app.main:app --port $API_PORT
+    command: uvicorn app.main:app --host 0.0.0.0 --port $API_PORT
+
+  redis:
+    container_name: redis
+    hostname: ${REDIS_HOST}
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - ${REDIS_PORT}:6379
