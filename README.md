@@ -32,7 +32,7 @@
 - При работе с polling:  
 `uvicorn app.main:app`
 - При работе с webhook:
-- `uvicorn app.main:app --host 0.0.0.0 --port 443`
+- `uvicorn app.main:app --host 0.0.0.0 --port $API_PORT --ssl-keyfile privkey.pem --ssl-certfile fullchain.pem`
 
 ## Запуск в Docker
 После настройки окружения запустите бота в Docker:
