@@ -1,16 +1,16 @@
 from datetime import datetime
 
-from aiogram import Router, types, F
+from aiogram import Router, types
 from aiogram.filters import Text, Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 
+from async_cb_rate.errors import CurrencyRateNotFoundError, NoValidDateError
+from async_cb_rate.parser import get_rate
+
 from app.keyboards import currency
 from app.utils.date_parser import parse_date
 from app.utils.redis_client import RedisRateHandler
-from async_cb_rate.errors import CurrencyRateNotFoundError
-
-from async_cb_rate.parser import get_rate
 from app.settings import config
 
 router = Router()
@@ -75,8 +75,10 @@ async def process_currency_data(msg: types.Message, state: FSMContext):
     if (found_currency := await rate_cache.get_currency(currency_code, date=currency_date)) is None:
         try:
             found_currency = await get_rate(code=currency_code, date=currency_date)
+        except NoValidDateError:
+            return await msg.reply(f"Введённой даты не существует.\n\n{currency_date_msg}")
         except CurrencyRateNotFoundError:
-            return await msg.reply(f"Неверный формат даты, возможно такой даты не существует.\n\n{currency_date_msg}")
+            return await msg.reply(f"Неверный формат даты\n\n{currency_date_msg}")
         else:
             await rate_cache.add_currency(found_currency)
     search_date = found_currency.date

@@ -1,3 +1,4 @@
+import logging
 from fastapi import FastAPI
 from aiogram import types, F
 
@@ -15,11 +16,17 @@ dp.include_router(not_found.router)
 
 @app.on_event("startup")
 async def on_startup():
-    await bot.set_webhook(
-        url=config.WEBHOOK_URL,
-        drop_pending_updates=True,
-        allowed_updates=dp.resolve_used_update_types()
-    )
+    logging.info(f"using <{config.SENDING_TYPE}> type")
+    match config.SENDING_TYPE:
+        case "webhook":
+            await bot.set_webhook(
+                url=config.WEBHOOK_URL,
+                drop_pending_updates=False,
+                allowed_updates=dp.resolve_used_update_types()
+                )
+        case "polling":
+            await bot.delete_webhook(drop_pending_updates=True)
+            await dp.start_polling(bot)
 
 
 @app.post("/")

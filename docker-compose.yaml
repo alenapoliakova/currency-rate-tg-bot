@@ -8,18 +8,22 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - ${API_PORT}:5001
+      - ${API_PORT}:443
     expose:
-      - 5001
+      - 443
     volumes:
       - .:/app
     env_file:
       - .env
     depends_on:
       - redis
-#    command: uvicorn app.main:app --port $API_PORT
-    command: uvicorn app.main:app --host 0.0.0.0 --port $API_PORT
-
+    command: >
+      sh -c "if [ '$SENDING_TYPE' = 'webhook' ]; then 
+        # Use SSL
+        uvicorn app.main:app --host 0.0.0.0 --port $API_PORT --ssl-keyfile privkey.pem --ssl-certfile fullchain.pem
+      else
+        uvicorn app.main:app --host 0.0.0.0 --port $API_PORT
+      fi"
   redis:
     container_name: redis
     hostname: ${REDIS_HOST}
