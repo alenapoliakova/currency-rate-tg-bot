@@ -1,7 +1,7 @@
-https://github.com/aiogram/aiogram/archive/refs/heads/dev-3.x.zip
-fastapi==0.88.0
-uvicorn==0.20.0
-pydantic==1.10.2
-async-cb-rate==1.0.0
-redis==4.4.0
-python-dotenv==0.21.0
+aiogram==3.0.0b7
+fastapi~=0.88.0
+uvicorn~=0.20.0
+pydantic~=1.10.2
+async-cb-rate==1.0.1
+redis~=4.4.0
+python-dotenv~=0.21.0
